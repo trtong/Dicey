@@ -22,7 +22,6 @@ public class Dice {
         }
 
         return result;
-
     }
 
 }
