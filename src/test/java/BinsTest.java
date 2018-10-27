@@ -7,12 +7,14 @@ public class BinsTest {
 
     Dice testDice;
     Bins testBins;
+    int key;
 
     public BinsTest() {
 
         testDice = new Dice(2);
         testBins = new Bins(2, 12);
 
+        key = testDice.getNumberOfDice();
     }
 
     @Test
@@ -37,5 +39,25 @@ public class BinsTest {
 
         // Then
         Assert.assertTrue(keyMatches);
+    }
+
+    @Test
+    public void testCheckBinValue() {
+
+        // Given
+        int max = 100;
+        int actual = 0;
+
+        // When
+        for (int i = 0; i < 100; i++) {
+            testBins.incrementValue(key);
+        }
+
+        if (testBins.hasKey(key)) {
+            actual = testBins.results.get(key);
+        }
+
+        // Then
+        Assert.assertEquals(max, actual);
     }
 }

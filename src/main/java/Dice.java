@@ -24,5 +24,9 @@ public class Dice {
         return result;
     }
 
+    public int getNumberOfDice() {
+        return this.numberOfDice;
+    }
+
 }
 
