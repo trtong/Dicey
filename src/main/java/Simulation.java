@@ -1,3 +1,7 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintStream;
+
 public class Simulation {
 
     int dice = 0;
@@ -19,5 +23,38 @@ public class Simulation {
                 simulationBins.incrementValue(key);
             }
         }
+    }
+
+    public void printToFile() throws FileNotFoundException {
+        // Output to file
+
+        PrintStream file = new PrintStream(new File("trinhResults.md"));
+        PrintStream console = System.out;
+
+        System.setOut(file);
+
+        StringBuilder resultsOutput = new StringBuilder();
+
+        resultsOutput.append("***\nSimulation of " + this.dice + " dice tossed for " + this.tosses + ".\n***\n\n");
+
+        for (int key: simulationBins.allKeys) {
+            int value = simulationBins.results.get(key);
+            resultsOutput.append(String.format("%3d : %8d: %4.2f ", key, value, ((double) value / (double) this.tosses)));
+            int starCounter = (int) Math.floor((double) ( value / ( this.tosses / 100)));
+            resultsOutput.append(repeatString("*", starCounter) + "\n");
+        }
+
+        System.out.println(resultsOutput.toString());
+
+    }
+
+    public String repeatString(String stringToRepeat, int numberOfTimes){
+        String returnString = "";
+
+        for (int i = 0; i < numberOfTimes; i++) {
+            returnString += stringToRepeat;
+        }
+
+        return returnString;
     }
 }

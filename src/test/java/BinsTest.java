@@ -61,3 +61,4 @@ public class BinsTest {
         Assert.assertEquals(max, actual);
     }
 }
+
