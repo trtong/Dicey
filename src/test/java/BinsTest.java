@@ -1,16 +1,13 @@
+import org.junit.Assert;
 import org.junit.Test;
+
+import java.util.Set;
 
 public class BinsTest {
 
     Dice testDice;
     Bins testBins;
 
-
-    /**
-     * test to make?
-     * get bin # { how many in that bin? }
-     *
-     */
     public BinsTest() {
 
         testDice = new Dice(2);
@@ -18,14 +15,27 @@ public class BinsTest {
 
     }
 
-
     @Test
     public void testHashMap() {
 
-        for (int key: testBins.results.keySet()) {
+        // Given
+        int[] expected = {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
+        boolean keyMatches = false;
+        boolean expectedKey = true;
+        int i = 0;
 
+        // When
+        Set<Integer> actual = testBins.results.keySet();
+
+        for (int key: actual) {
+            if (key == expected[i]) {
+                keyMatches = true;
+                break;
+            }
+            i++;
         }
 
-
+        // Then
+        Assert.assertTrue(keyMatches);
     }
 }

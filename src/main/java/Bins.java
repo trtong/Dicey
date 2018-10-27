@@ -1,7 +1,7 @@
 import java.util.HashMap;
 
 public class Bins {
-    private HashMap<Integer, Integer> results;
+    public HashMap<Integer, Integer> results;
     int min = 0;
     int max = 0;
     // creates an array of required length
@@ -16,9 +16,5 @@ public class Bins {
         for (int i = min; i <= max; i++) {
             this.results.put(i, 0);
         }
-    }
-
-    public HashMap getHashMap() {
-        return this.results;
     }
 }
